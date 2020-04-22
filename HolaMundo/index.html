@@ -18,6 +18,7 @@
 
   <body>
     <div class="container" id="app">
+      <componente1></componente1>
       <h1>{{titulo}}</h1>
       <div :class="[textColor,fondo]">
         <p>
@@ -42,7 +43,11 @@
       <button class="btn btn-success my-4" v-on:click="addNuevaFruta()">
         Agregar fruta
       </button>
-      <div :class="['alert',fruta.amount > 0 ? 'alert-success':'alert-danger']" v-for="(fruta,index) of frutas" role="alert">
+      <div
+        :class="['alert',fruta.amount > 0 ? 'alert-success':'alert-danger']"
+        v-for="(fruta,index) of frutas"
+        role="alert"
+      >
         <div class="d-flex justify-content-between">
           <div>
             <span>{{fruta.name }} </span>
@@ -69,6 +74,18 @@
       </div>
 
       <h1>Stock total de frutas: {{sumarFrutas}}</h1>
+      <div class="progress">
+        <div
+          :class="['progress-bar',barColor]"
+          role="progressbar"
+          :style="{'width':+ percent+'%'}"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          {{percent}}%
+        </div>
+      </div>
     </div>
 
     <!-- development version, includes helpful console warnings -->
