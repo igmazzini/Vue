@@ -1,20 +1,3 @@
-Vue.component('componente1', {
-    template:
-     `
-    <div>
-        <h1>
-        {{saludo}}
-        </h1>
-        <h3>caccsac</h3>
-    </div>
-    `,
-    data() {
-        return {
-            saludo: 'Hola mundo desde componente'
-        }
-    }
-
-});
 
 const app = new Vue({
     el: "#app",
