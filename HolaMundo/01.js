@@ -1,6 +1,31 @@
 
+const store = new Vuex.Store({
+    state:{
+        saludo:'Saludo desde store',
+        users:[]
+    },
+    mutations:{
+        cambiarSaludo(state,saludoNuevo){
+            
+            state.saludo = saludoNuevo;
+        },
+        setUsers(state,users){
+            state.users = users;
+        }
+
+    },
+    actions:{
+        getUsers: async function(context){
+            const data = await fetch('https://jsonplaceholder.typicode.com/users');
+            const users = await data.json();
+            context.commit('setUsers',users);
+        }
+    }
+});
+
 const app = new Vue({
     el: "#app",
+    store:store,
     data: {
         titulo: "Hola Mundo Vue",
         frutaNueva: { name: '', amount: 0 },
@@ -51,6 +76,9 @@ const app = new Vue({
         },
         updateLocalStorage() {
             localStorage.setItem('frutasLS', JSON.stringify(this.frutas));
+        },
+        prueba(){
+            console.log('PRUEBA');
         }
 
 
